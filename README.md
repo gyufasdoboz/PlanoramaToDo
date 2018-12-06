@@ -14,4 +14,4 @@ Currently working (tested) platforms:
 - Android
 
 
-\*This application is not production ready \*
+\* This application is not production ready \*
