@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDo.AddTaskPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,10" BackgroundColor="White">
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="20" >
+                <BoxView BackgroundColor="AliceBlue"  />
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" ></ColumnDefinition>
+                        <ColumnDefinition Width="5*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Color="AliceBlue"></BoxView>
+                    <Label VerticalOptions="Center"  FontSize="Large" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Add your new task!"/>
+                    <Entry x:Name="ToDoTitle"   FontSize="Medium" VerticalOptions="Center" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Placeholder="Enter the task here..." WidthRequest="100"/>
+                    <Button x:Name="DoneButton"  FontSize="Medium" Grid.Column="0" Grid.Row="2" Text="Done" BackgroundColor="DarkSeaGreen" Clicked="DoneButton_OnClicked"></Button>
+                    <Button Grid.Column="1"  FontSize="Medium" Grid.Row="2" Text="Back" Clicked="CancelButton_OnClicked" BackgroundColor="LightGray"></Button>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

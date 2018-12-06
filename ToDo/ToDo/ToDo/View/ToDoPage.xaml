@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ToDo"
+             x:Class="ToDo.ToDoPage"
+             xmlns:toDoTemplate="clr-namespace:ToDo.Template">
+
+    <StackLayout Padding="20,20,20,20" BackgroundColor="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+            </Grid.RowDefinitions>
+            <Button x:Name="SaveButton" Grid.Column="0" Grid.Row="0" BackgroundColor="RoyalBlue" TextColor="White" FontSize="Medium" Text="💾" Clicked="SaveButton_OnClicked" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Button>
+            <Picker Title="▼ Sorting mode" TextColor="RoyalBlue" x:Name="ShortByPicker" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding OrderBy}" SelectedIndexChanged="Picker_OnSelectedIndexChanged"/>
+            <Button x:Name="AddButton" Grid.Column="2" Grid.Row="0" BackgroundColor="RoyalBlue" TextColor="White" FontSize="Medium" Text="Add" Clicked="AddButton_OnClicked"></Button>
+        </Grid>
+        <ListView x:Name="ToDoListView" ItemsSource="{Binding ToDoList}" SeparatorColor="DarkBlue" RowHeight="60" SelectionMode="None">
+            <ListView.ItemTemplate  >
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View >
+                            <Grid VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Column="0" Color="AliceBlue"></BoxView>
+                                <Label Margin="20,0,0,0" Grid.Column="0" Text="{Binding Title}" Style="{DynamicResource ListItemTextStyle}" FontSize="Medium"  HorizontalOptions="Start" VerticalOptions="Start"/>
+                                <Label  Margin="20,0,0,0" Grid.Column="0" Text="{Binding DateTime, StringFormat='{0:MMMM d, yyyy HH:mm}'}" Style="{DynamicResource ListItemDetailTextStyle}" HorizontalOptions="Start" VerticalOptions="End"/>
+                                <Button x:Name="StateBoxView"   Grid.Column="1" BackgroundColor="{Binding StateColor}"  Text="{Binding State}" FontSize="Medium" Clicked="StateBoxView_OnClicked" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
