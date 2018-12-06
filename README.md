@@ -15,3 +15,5 @@ Currently working (tested) platforms:
 
 
 \* This application is not production ready \*
+
+Author: Lorant Csonka (csonkalorant@gmail.com)
