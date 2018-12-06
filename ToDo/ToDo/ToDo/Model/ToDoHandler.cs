@@ -14,7 +14,7 @@ namespace ToDo.Model
     {
         private static ObservableCollection<ToDo> toDoList = new ObservableCollection<ToDo>();
         public static Order Ordering { get; set; } = Model.Order.ByDate;
-        
+
         /// <summary>
         /// When we add new item, we order the list again
         /// </summary>
@@ -31,8 +31,11 @@ namespace ToDo.Model
         public static async Task LoadToDoListAsync()
         {
             var loadedToDoList = await App.WebService.GetToDoListAsync();
-            toDoList =new ObservableCollection<ToDo>(loadedToDoList);
-            Order();
+            if (loadedToDoList != null)
+            {
+                toDoList = new ObservableCollection<ToDo>(loadedToDoList);
+                Order();
+            }
         }
 
         public static void Order()
@@ -43,7 +46,7 @@ namespace ToDo.Model
             }
             else
             {
-                toDoList= new ObservableCollection<ToDo>(toDoList.OrderBy(x => x.Title).ToList());
+                toDoList = new ObservableCollection<ToDo>(toDoList.OrderBy(x => x.Title).ToList());
             }
         }
 
